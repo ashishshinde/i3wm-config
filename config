@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 
 font pango:nimbus sans 9
 bar {
-  status_command conky -c $HOME/.config/i3/conky/conkyrc
+  status_command conky -c $HOME/.config/i3/conky/conkyrc.lua
   mode hide
   hidden_state hide
   modifier Mod4
