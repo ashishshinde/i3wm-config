@@ -265,8 +265,12 @@ exec i3-msg 'workspace 2; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
 
 # Network applet start
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/bin/NetworkManager
 exec --no-startup-id $HOME/.config/i3/network-connect.sh
 # Setup the wallpaper
 exec_always --no-startup-id $HOME/.get-pic.py
 # sets the wallpaper for the session
 exec_always --no-startup-id /usr/bin/feh --bg-scale $HOME/.wallpaper.jpg
+# udiskie for mounting usb devices
+exec --no-startup-id /usr/bin/udiskie -ans &
