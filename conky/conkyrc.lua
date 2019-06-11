@@ -14,7 +14,7 @@ ${if_mpd_playing}${mpd_artist}${mpd_title}${endif}     \
    ${downspeedf wlp3s0} | ${upspeedf wlp3s0}     \
   ${wireless_link_qual wlp3s0}%  ${wireless_essid wlp3s0}     \
    ${hwmon 2 temp 1} | ${hwmon 2 temp 3}     \
-  ${exec amixer get Master -c 0 -M | grep -oE "\[\[:digit:\]\]*%"}     \
+  ${exec /home/ashish/.config/i3/conky/volume.sh}     \
   ${time %a %b %d}     \
 ⌛  ${time %H:%M}
 ]]

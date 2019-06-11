@@ -149,8 +149,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
 # lock screen
-bindsym Control+Mod1+l exec "i3lock -t -i $HOME/.wallpaper.png"
-
+bindsym Control+Mod1+l exec "i3lock -t -i $HOME/.lockscreen.png"
+# change wallpaper
+bindsym $mod+Shift+v exec "/usr/bin/variety -n"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -237,20 +238,23 @@ bindsym Control+Mod1+f exec /usr/bin/firefox
 bindsym Control+Mod1+e exec $HOME/bin/eclipse.sh
 bindsym Control+Mod1+m exec $HOME/bin/emacs-gui.sh
 bindsym Control+Mod1+c exec /usr/bin/clementine
-bindsym Control+Mod1+i exec $HOME/tools/idea/bin/idea.sh
+bindsym Control+Mod1+i workspace 4;exec $HOME/tools/idea/bin/idea.sh
 
 # Workspace assignments
 for_window [class="Slack"] move container to workspace 1
 for_window [class="Clementine"] move container to workspace 1
-for_window [class="jetbrains-idea-ce"] move container to workspace 4
-for_window [class="Emacs"] move container to workspace 3
-for_window [class="Eclipse"] move container to workspace 4
+#for_window [class="jetbrains-idea-ce"] move container to workspace 4
+#for_window [class="Emacs"] move container to workspace 3
+#for_window [class="Eclipse"] move container to workspace 4
 
 # Tiny window border
 for_window [class="^.*"] border pixel 1
 
 
 # Startup
+# Start dunst for notifications
+exec --no-startup-id dunst
+
 # Setup the screen
 exec --no-starutp-id /usr/bin/xrandr --output HDMI-0 --off --output DP-4 --mode 2560x1440 --pos 0x180 --rotate normal --output DP-3 --off --output DP-2 --scale 0.7x0.7 --primary --mode 2880x1800 --pos 2560x0 --rotate normal --output DP-1 --off --output DP-0 --off
 exec --no-startup-id /usr/bin/xrandr --dpi 96
@@ -260,17 +264,26 @@ exec -no-startup-id /usr/bin/parcellite
 # Applications
 exec /usr/bin/pulseaudio --start --log-target=syslog
 exec /usr/bin/slack
-exec $HOME/bin/emacs-gui.sh
+exec --no-startup-id $HOME/bin/emacs-gui.sh &
 exec i3-msg 'workspace 2; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
 
+# Set the default sink
+exec --no-startup-id $HOME/.config/i3/pa-sink-set.sh
+
 # Network applet start
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/bin/NetworkManager
+#exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/bin/NetworkManager
 exec --no-startup-id $HOME/.config/i3/network-connect.sh
 # Setup the wallpaper
-exec_always --no-startup-id $HOME/.get-pic.py
+#exec_always --no-startup-id $HOME/.get-pic.py
 # sets the wallpaper for the session
-exec_always --no-startup-id /usr/bin/feh --bg-scale $HOME/.wallpaper.jpg
+#exec_always --no-startup-id /usr/bin/feh --bg-scale $HOME/.wallpaper.jpg
 # udiskie for mounting usb devices
+exec variety -n
+exec --no-startup-id "convert  $(variety --get | tail -1) $HOME/.lockscreen.png"
+
 exec --no-startup-id /usr/bin/udiskie -ans &
+
+# kde connect to get phone notifications
+exec --no-startup-id /usr/lib/kdeconnectd
