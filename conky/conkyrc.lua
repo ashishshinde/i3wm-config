@@ -8,8 +8,8 @@ conky.config = {
 }
 
 conky.text = [[
-${exec acpi -b | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\3/'}% \
-${exec acpi -b | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\2/'} \
+${exec acpi -b | head -1 | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\3/'}% \
+${exec acpi -b | head -1 | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\2/'} \
 ${if_mpd_playing}${mpd_artist}${mpd_title}${endif}     \
    ${downspeedf wlp3s0} | ${upspeedf wlp3s0}     \
   ${wireless_link_qual wlp3s0}%  ${wireless_essid wlp3s0}     \

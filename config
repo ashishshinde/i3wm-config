@@ -260,11 +260,11 @@ exec --no-starutp-id /usr/bin/xrandr --output HDMI-0 --off --output DP-4 --mode 
 exec --no-startup-id /usr/bin/xrandr --dpi 96
 exec --no-startup-id /usr/bin/compton
 exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
-exec -no-startup-id /usr/bin/parcellite
+
 # Applications
-exec /usr/bin/pulseaudio --start --log-target=syslog
+exec --no-startup-id /bin/pulseaudio --start --log-target=syslog
 exec /usr/bin/slack
-exec --no-startup-id $HOME/bin/emacs-gui.sh &
+#exec --no-startup-id $HOME/bin/emacs-gui.sh &
 exec i3-msg 'workspace 2; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
 
