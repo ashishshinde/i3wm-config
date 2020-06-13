@@ -215,7 +215,7 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
-new_window 1pixel
+default_border pixel 1
 
 # Borders
 # default_border pixel 0
@@ -234,21 +234,34 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 
 # Application shortcuts
-bindsym Control+Mod1+f exec /usr/bin/firefox
-bindsym Control+Mod1+e exec $HOME/bin/eclipse.sh
-bindsym Control+Mod1+m exec $HOME/bin/emacs-gui.sh
-bindsym Control+Mod1+c exec /usr/bin/clementine
-bindsym Control+Mod1+i workspace 4;exec $HOME/tools/idea/bin/idea.sh
+bindsym $mod+b exec /usr/bin/firefox
+#bindsym Control+Mod1+e exec $HOME/bin/eclipse.sh
+bindsym $mod+m exec $HOME/bin/emacs-gui.sh
+#bindsym Control+Mod1+c exec /usr/bin/clementine
+bindsym $mod+i workspace 4;exec $HOME/tools/idea/bin/idea.sh
 
 # Workspace assignments
 for_window [class="Slack"] move container to workspace 1
 for_window [class="Clementine"] move container to workspace 1
+
+for_window [class="grub-emu"] floating enable
+for_window [title="Event Tester"] floating enable
+for_window [title="xfce4-notifyd"] floating enable
+for_window [title="xfce4-notifyd"] border none
+for_window [class="Key-mon"] floating enable
+for_window [class="Key-mon"] border none
+for_window [title="VNC authentication [VncAuth]"] floating enable
+for_window [title="VNC Viewer: Information"] floating enable
+for_window [class="Ibmsaml"] floating enable
+for_window [class="Shotwell"] floating enable
+for_window [class="XFontSel"] floating enable
+for_window [class="Blueman-manager"] floating enable
 #for_window [class="jetbrains-idea-ce"] move container to workspace 4
 #for_window [class="Emacs"] move container to workspace 3
 #for_window [class="Eclipse"] move container to workspace 4
 
 # Tiny window border
-for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border none
 
 
 # Startup
@@ -256,10 +269,15 @@ for_window [class="^.*"] border pixel 1
 exec --no-startup-id dunst
 
 # Setup the screen
-exec --no-starutp-id /usr/bin/xrandr --output HDMI-0 --off --output DP-4 --mode 2560x1440 --pos 0x180 --rotate normal --output DP-3 --off --output DP-2 --scale 0.7x0.7 --primary --mode 2880x1800 --pos 2560x0 --rotate normal --output DP-1 --off --output DP-0 --off
-exec --no-startup-id /usr/bin/xrandr --dpi 96
+exec --no-startup-id xrandr --output HDMI-0 --pos 1920x0 --rotate normal --output eDP-1-1 --pos 0x180
+#exec --no-startup-id xrandr --newmode   "1920x1080_59.80"  172.22  1920 2040 2248 2576  1080 1081 1084 1118  -HSync +Vsync
+#exec --no-startup-id xrandr --addmode HDMI-0 1920x1080_59.80
+#exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080_59.80
+#exec --no-starutp-id /usr/bin/xrandr --output HDMI-0 --off --output DP-4 --mode 2560x1440 --pos 0x180 --rotate normal --output DP-3 --off --output DP-2 --scale 0.7x0.7 --primary --mode 2880x1800 --pos 2560x0 --rotate normal --output DP-1 --off --output DP-0 --off
+#exec --no-startup-id /usr/bin/xrandr --dpi 120
 exec --no-startup-id /usr/bin/compton
-exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
+
+#exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
 
 # Applications
 exec --no-startup-id /bin/pulseaudio --start --log-target=syslog
@@ -287,3 +305,6 @@ exec --no-startup-id /usr/bin/udiskie -ans &
 
 # kde connect to get phone notifications
 exec --no-startup-id /usr/lib/kdeconnectd
+
+# bluetooth manager
+exec --no-startup-id /usr/bin/blueman-applet
