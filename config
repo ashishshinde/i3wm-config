@@ -275,7 +275,9 @@ exec --no-startup-id xrandr --output HDMI-0 --pos 1920x0 --rotate normal --outpu
 #exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080_59.80
 #exec --no-starutp-id /usr/bin/xrandr --output HDMI-0 --off --output DP-4 --mode 2560x1440 --pos 0x180 --rotate normal --output DP-3 --off --output DP-2 --scale 0.7x0.7 --primary --mode 2880x1800 --pos 2560x0 --rotate normal --output DP-1 --off --output DP-0 --off
 #exec --no-startup-id /usr/bin/xrandr --dpi 120
+exec --no-startup-id $HOME/.config/i3/set-dpi.sh
 exec --no-startup-id /usr/bin/compton
+exec --no-startup-id xbacklight -set 63
 
 #exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
 
