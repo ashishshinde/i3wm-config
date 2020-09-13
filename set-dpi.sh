@@ -1,9 +1,7 @@
-
-
 #!/bin/bash
 
 dpi=96
-if xrandr | grep HDMI; then
+if xrandr | grep 'HDMI.* connected'; then
   dpi=144
 fi
 

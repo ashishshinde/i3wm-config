@@ -52,7 +52,8 @@ Set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec "$HOME/.config/i3/terminal.sh"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -269,7 +270,7 @@ for_window [class="Blueman-manager"] floating enable
 exec --no-startup-id dunst
 
 # Setup the screen
-exec --no-startup-id xrandr --output HDMI-0 --pos 1920x0 --rotate normal --output eDP-1-1 --pos 0x180
+#exec --no-startup-id xrandr --output HDMI-0 --pos 1920x0 --rotate normal --output eDP-1-1 --pos 0x180
 #exec --no-startup-id xrandr --newmode   "1920x1080_59.80"  172.22  1920 2040 2248 2576  1080 1081 1084 1118  -HSync +Vsync
 #exec --no-startup-id xrandr --addmode HDMI-0 1920x1080_59.80
 #exec --no-startup-id xrandr --output HDMI-0 --mode 1920x1080_59.80
