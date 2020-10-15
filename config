@@ -216,11 +216,11 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
-#default_border pixel 1
 
 # Borders
 default_border pixel 1
 default_floating_border pixel 1
+hide_edge_borders smart
 
 # Media controls
 
