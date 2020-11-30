@@ -209,10 +209,10 @@ bar {
 
 # Window colors
 # class                 border  bground text    indicator child_border
-client.focused          #000000 #131411 #FFFFFF #131411   #333333
-client.focused_inactive #333333 #333333 #FFFFFF #484E50   #5F676A
-client.unfocused        #222222 #222222 #888888 #292D2E   #222222
-client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.focused          #000000 #131411 #FFFFFF #131411   #080808
+client.focused_inactive #333333 #333333 #FFFFFF #484E50   #080808
+client.unfocused        #222222 #222222 #888888 #292D2E   #080808
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900001
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
