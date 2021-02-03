@@ -16,5 +16,5 @@ ${if_mpd_playing}${mpd_artist}${mpd_title}${endif}     \
    ${hwmon 2 temp 1} | ${hwmon 2 temp 3}     \
   ${exec /home/ashish/.config/i3/conky/volume.sh}     \
   ${time %a %b %d}     \
-⌛  ${time %H:%M}
+⌛  ${time %H:%M}  |
 ]]

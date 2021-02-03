@@ -189,12 +189,13 @@ bindsym $mod+r mode "resize"
 font pango:nimbus sans 9
 bar {
   status_command conky -c $HOME/.config/i3/conky/conkyrc.lua
+  #status_command i3status
   mode hide
   hidden_state hide
   modifier Mod4
   position bottom
   strip_workspace_numbers yes
-  tray_output primary
+  #tray_output primary
   colors {
     background #000000
     statusline #E2E2E2
@@ -260,6 +261,9 @@ for_window [class="Blueman-manager"] floating enable
 #for_window [class="jetbrains-idea-ce"] move container to workspace 4
 #for_window [class="Emacs"] move container to workspace 3
 #for_window [class="Eclipse"] move container to workspace 4
+
+#for_window [class="Slack"] floating disable
+
 
 # Tiny window border
 # for_window [class="^.*"] border none
