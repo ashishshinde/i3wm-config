@@ -241,6 +241,9 @@ bindsym $mod+b exec /usr/bin/firefox
 bindsym $mod+m exec $HOME/bin/emacs-gui.sh
 #bindsym Control+Mod1+c exec /usr/bin/clementine
 bindsym $mod+i workspace 4;exec $HOME/tools/idea/bin/idea.sh
+bindsym $mod+g workspace 4;exec $HOME/tools/goland/bin/goland.sh
+bindsym $mod+c workspace 4;exec $HOME/tools/clion/bin/clion.sh
+
 
 # Workspace assignments
 for_window [class="Slack"] move container to workspace 1
@@ -283,6 +286,7 @@ exec --no-startup-id dunst
 exec --no-startup-id $HOME/.config/i3/set-dpi.sh
 exec --no-startup-id /usr/bin/compton
 exec --no-startup-id xbacklight -set 63
+exec --no-startup-id safeeyes
 
 #exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
 
@@ -315,3 +319,6 @@ exec --no-startup-id /usr/lib/kdeconnectd
 
 # bluetooth manager
 exec --no-startup-id /usr/bin/blueman-applet
+
+# network manager applet
+exec --no-startup-id /usr/bin/nm-applet
