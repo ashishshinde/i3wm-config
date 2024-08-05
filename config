@@ -90,8 +90,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # move workspace
-bindsym $mod+m+Left move workspace to output left
-bindsym $mod+m+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -226,13 +226,13 @@ hide_edge_borders smart
 # Media controls
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks | grep index: | grep '*' | sed -e 's/.*: //g') toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 
 # Application shortcuts
@@ -241,8 +241,8 @@ bindsym $mod+b exec /usr/bin/firefox
 bindsym $mod+m exec $HOME/bin/emacs-gui.sh
 #bindsym Control+Mod1+c exec /usr/bin/clementine
 bindsym $mod+i workspace 4;exec $HOME/tools/idea/bin/idea.sh
-bindsym $mod+g workspace 4;exec $HOME/tools/goland/bin/goland.sh
-bindsym $mod+c workspace 4;exec $HOME/tools/clion/bin/clion.sh
+#bindsym $mod+g workspace 4;exec $HOME/tools/goland/bin/goland.sh
+#bindsym $mod+c workspace 4;exec $HOME/tools/clion/bin/clion.sh
 
 
 # Workspace assignments
@@ -322,3 +322,46 @@ exec --no-startup-id /usr/bin/blueman-applet
 
 # network manager applet
 exec --no-startup-id /usr/bin/nm-applet
+
+# redshift to adjust monitor color
+exec --no-startup-id /usr/bin/redshift-gtk -l 12.9716:77.5946 &
+
+# jetbrains toolbox
+exec --no-startup-id /home/ashish/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox &
+
+# Enable tapping on trackpad
+exec --no-startup-id xinput set-prop 11 "libinput Tapping Enabled" 1
+# Review the lines below and append to ~/.config/i3/config
+
+exec_always --no-startup-id picom  -b --config /home/ashish/.config/picom.conf
+
+
+## Volume control
+# Path to volume control, without trailing slash
+set $volumepath ~/.config/i3/i3-volume
+
+# Command for the status line
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage
+set $volumestep 5
+
+# alsa-utils settings
+#
+# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
+#
+# Card number to control.
+#   If not specified, i3-volume will let `amixer` use a default.
+#   List cards: aplay -l
+#set $alsacard 1
+
+# append "-c $alsacard" without quotes to override default card
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig up $volumestep
+bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig down $volumestep
+bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -an -t $statuscmd -u $statussig mute

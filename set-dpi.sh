@@ -1,8 +1,10 @@
+
+
 #!/bin/bash
 
 dpi=96
-if xrandr | grep 'connected 3840x2160'; then
-  dpi=144
+if xrandr | grep HDMI; then
+  dpi=120
 fi
 
 CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/xsettingsd"
