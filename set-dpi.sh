@@ -2,9 +2,10 @@
 
 #!/bin/bash
 
-dpi=96
-if xrandr | grep HDMI; then
-  dpi=120
+#dpi=96
+dpi=144
+if xrandr | grep -e "HDMI.* connected"; then
+  dpi=144
 fi
 
 CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/xsettingsd"

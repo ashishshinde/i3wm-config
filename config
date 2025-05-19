@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
-font pango:nimbus sans 9
+font pango:nimbus sans 12
 bar {
   status_command conky -c $HOME/.config/i3/conky/conkyrc.lua
   #status_command i3status
@@ -287,12 +287,16 @@ exec --no-startup-id $HOME/.config/i3/set-dpi.sh
 exec --no-startup-id /usr/bin/compton
 exec --no-startup-id xbacklight -set 63
 exec --no-startup-id safeeyes
+exec --no-startup-id xinput set-prop "VEN_27C6:00 27C6:0F60 Touchpad" "libinput Tapping Enabled" 1
+
+
 
 #exec --no-startup-id /home/ashish/bin/mac_fixresolution.sh
 
 # Applications
-exec --no-startup-id /bin/pulseaudio --start --log-target=syslog
-exec /usr/bin/slack
+#exec --no-startup-id /usr/bin/pulseaudio --start --log-target=syslog
+exec --no-startup-id systemctl --user start pulseaudio.service
+exec /snap/bin/slack
 #exec --no-startup-id $HOME/bin/emacs-gui.sh &
 exec i3-msg 'workspace 2; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
