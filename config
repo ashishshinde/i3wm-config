@@ -55,6 +55,10 @@ bindsym $mod+Shift+Down    move down
 bindsym $mod+Shift+Up      move up
 bindsym $mod+Shift+Right   move right
 
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
+
+
 # --- KEYBINDINGS: LAYOUT & ORIENTATION ---
 bindsym $mod+h             split h
 bindsym $mod+v             split v
@@ -89,6 +93,33 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# --- WINDOW RESIZE ---
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
 # --- KEYBINDINGS: APPLICATION SHORTCUTS ---
 bindsym $mod+b             exec /usr/bin/firefox
 bindsym $mod+m             exec $HOME/bin/emacs-gui.sh
@@ -110,6 +141,7 @@ for_window [class="grub-emu"] floating enable
 for_window [title="xfce4-notifyd"] floating enable, border none
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Key-mon"] floating enable, border none
+
 
 # --- BAR ---
 bar {
