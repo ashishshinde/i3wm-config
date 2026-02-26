@@ -179,5 +179,7 @@ exec --no-startup-id $HOME/.config/i3/set-dpi.sh
 exec --no-startup-id xinput set-prop "ASUF1205:00 2808:0106 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id picom -b --config /home/ashish/.config/picom.conf
 exec --no-startup-id jetbrains-toolbox &
+exec --no-startup-id safeeyes
+exec --no-startup-id variety -n
 exec i3-msg 'workspace 5; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
