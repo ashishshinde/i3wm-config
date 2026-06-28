@@ -188,8 +188,8 @@ exec --no-startup-id redshift -l 18.52:73.85 -t 5500:3500
 exec --no-startup-id variety -n
 #exec --no-startup-id sleep 2; $HOME/bin//bing-wallpaper.sh
 
-exec --no-startup-id kdeconnectd
-exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnectd
+exec --no-startup-id QT_QPA_PLATFORM=xcb kdeconnect-indicator
 exec i3-msg 'workspace 1; exec /usr/bin/slack'
 exec i3-msg 'workspace 5; exec /usr/bin/konsole'
 exec i3-msg 'workspace 2; exec /usr/bin/firefox https://gmail.com'
